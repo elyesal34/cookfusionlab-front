@@ -1,5 +1,5 @@
 function chargerRecettes() {
-  fetch('../api/recettes.php')
+  fetch('https://monapi.exemple.com/api/recettes.php')
     .then(response => response.json())
     .then(data => {
       const ul = document.getElementById('liste-recettes');
@@ -9,6 +9,10 @@ function chargerRecettes() {
         li.textContent = recette.libelle + ' - ' + recette.description;
         ul.appendChild(li);
       });
+    })
+    .catch(error => {
+      const ul = document.getElementById('liste-recettes');
+      ul.innerHTML = '<li>Erreur lors du chargement des recettes.</li>';
     });
 }
 
